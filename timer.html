@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>timer</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-size: 12px;
+            font-family: "微软雅黑";
+            color: #666;
+        }
+
+        img {
+            border: none;
+        }
+
+        .box{
+            margin: 50px 50px 50px 50px;
+            width: 320px;
+            height: 320px;
+            /*background: url(images/timer.jpg) -152px -128px;*/
+            border: 1px solid red;
+            border-radius: 160px;
+            position: absolute;
+        }
+        .twelve{
+            line-height: 18px;
+            text-align: center;
+            width:18px;
+            height:18px;
+            border:1px solid red;
+            position: relative;
+            top: -6px;
+            left: 150px;
+        }
+        .eleven{
+            line-height: 18px;
+            text-align: center;
+            width:18px;
+            height:18px;
+            border:1px solid red;
+            position: absolute;
+            top: 16px;
+            left: 70px;
+        }
+        .one{
+            line-height: 18px;
+            text-align: center;
+            width:18px;
+            height:18px;
+            border:1px solid red;
+            position: absolute;
+            top: 16px;
+            left: 230px;
+        }
+        .ten{
+            line-height: 18px;
+            text-align: center;
+            width:18px;
+            height:18px;
+            border:1px solid red;
+            position: absolute;
+            top: 72px;
+            left: 15px;
+        }
+        .two{
+            line-height: 18px;
+            text-align: center;
+            width:18px;
+            height:18px;
+            border:1px solid red;
+            position: absolute;
+            top: 72px;
+            left: 282px;
+        }
+        .nine{
+            line-height: 18px;
+            text-align: center;
+            width:18px;
+            height:18px;
+            border:1px solid red;
+            position: absolute;
+            top: 150px;
+            left: -6px;
+        }
+        .three{
+            line-height: 18px;
+            text-align: center;
+            width:18px;
+            height:18px;
+            border:1px solid red;
+            position: absolute;
+            top: 150px;
+            left: 307px;
+        }
+        .eight{
+            line-height: 18px;
+            text-align: center;
+            width:18px;
+            height:18px;
+            border:1px solid red;
+            position: absolute;
+            top: 228px;
+            left: 15px;
+        }
+        .four{
+            line-height: 18px;
+            text-align: center;
+            width:18px;
+            height:18px;
+            border:1px solid red;
+            position: absolute;
+            top: 228px;
+            left: 282px;
+        }
+        .seven{
+            line-height: 18px;
+            text-align: center;
+            width:18px;
+            height:18px;
+            border:1px solid red;
+            position: absolute;
+            top: 284px;
+            left: 70px;
+        }
+        .five{
+            line-height: 18px;
+            text-align: center;
+            width:18px;
+            height:18px;
+            border:1px solid red;
+            position: absolute;
+            top: 284px;
+            left: 230px;
+        }
+        .six{
+            line-height: 18px;
+            text-align: center;
+            width:18px;
+            height:18px;
+            border:1px solid red;
+            position: absolute;
+            top: 306px;
+            left: 150px;
+        }
+        .hour{
+            width: 116px;
+            height: 15px;
+            border:1px solid red;
+            position: absolute;
+            top: 152px;
+            left: 140px;
+            transform: rotate(30deg);
+            transform-origin: 20px;
+        }
+
+        .minute{
+            width: 145px;
+            height: 9px;
+            border: 1px solid red;
+            position: absolute;
+            top: 155px;
+            left: 140px;
+            transform: rotate(60deg);
+            transform-origin: 20px;
+        }
+
+        .second{
+            width: 163px;
+            height: 3px;
+            border: 1px solid red;
+            position: absolute;
+            top: 158px;
+            left: 140px;
+            transform: rotate(90deg);
+            transform-origin: 20px;
+        }
+
+        .hour{
+            rotation: 15deg;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="twelve">12</div>
+    <div class="eleven">11</div>
+    <div class="one">1</div>
+    <div class="ten">10</div>
+    <div class="two">2</div>
+    <div class="nine">9</div>
+    <div class="three">3</div>
+    <div class="eight">8</div>
+    <div class="four">4</div>
+    <div class="seven">7</div>
+    <div class="five">5</div>
+    <div class="six">6</div>
+    <div class="second"></div>
+    <div class="minute"></div>
+    <div class="hour"></div>
+
+</div>
+
+
+<script src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        setInterval(function () {
+            //获取系统时间
+            var date = new Date();
+            //        获取时分秒
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            var second = date.getSeconds();
+            //转成12小时制
+            if(hour>=12) hour -= 12;
+            //        alert(hour+","+minute+","+second);
+            $(".second").css("transform","rotate("+(6*second-90)+"deg)");
+            $(".minute").css("transform","rotate("+((60*minute+second)/10-90)+"deg)");
+            $(".hour").css("transform","rotate("+((60*60*hour+60*minute+second)/120-90)+"deg)");
+
+        },1000);
+
+    })
+</script>
+</body>
+</html>
